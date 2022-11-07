@@ -137,7 +137,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25),
                 ),
-                margin: EdgeInsets.fromLTRB(15, 15, 15, 5),
+                margin: EdgeInsets.fromLTRB(15, 0, 15, 5),
                 child: Padding(
                   padding: EdgeInsets.all(15),
                   child: Column(
