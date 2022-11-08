@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 void main() {
   runApp(const MyApp());
@@ -63,13 +64,13 @@ List<objects> o_l = <objects>[
         size: 40,
       ),
       Colors.black),
-  objects(
+  /*objects(
       "=",
       Icon(
         Icons.calculate,
         size: 40,
       ),
-      Colors.black),
+      Colors.black),*/
   objects(
       "limpiar",
       Icon(
@@ -157,6 +158,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             onChanged: (String? X) {
                               setState(() {
                                 op1 = X!;
+                                v_origin = "";
+                                v_destiny = "";
                               });
                             },
                           ),
@@ -204,6 +207,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             onChanged: (String? X) {
                               setState(() {
                                 op2 = X!;
+                                v_origin = "";
+                                v_destiny = "";
                               });
                             },
                           ),
@@ -245,61 +250,67 @@ class _MyHomePageState extends State<MyHomePage> {
                                 if (o_l[index].number == "limpiar") {
                                   v_origin = "";
                                   v_destiny = "";
-                                  print(v_origin);
-                                  print(v_destiny);
+                                  //print(v_origin);
+                                  //print(v_destiny);
                                 } else if (o_l[index].number == "borrar") {
                                   v_origin = v_origin.substring(
                                       0, v_origin.length - 1);
-                                  print(v_origin);
-                                } else if (o_l[index].number == "=") {
-                                  if (op1 == "USD" && op2 == "USD") {
-                                    v_destiny =
-                                        (double.parse(v_origin) / 1).toString();
-                                    print(v_destiny);
-                                  } else if (op1 == "USD" && op2 == "EUR") {
-                                    v_destiny =
-                                        (double.parse(v_origin) * usd_eur)
-                                            .toString();
-                                    print(v_destiny);
-                                  } else if (op1 == "USD" && op2 == "COP") {
-                                    v_destiny =
-                                        (double.parse(v_origin) * usd_cop)
-                                            .toString();
-                                    print(v_destiny);
-                                  } else if (op1 == "EUR" && op2 == "USD") {
-                                    v_destiny =
-                                        (double.parse(v_origin) / usd_eur)
-                                            .toString();
-                                    print(v_destiny);
-                                  } else if (op1 == "EUR" && op2 == "EUR") {
-                                    v_destiny =
-                                        (double.parse(v_origin) / 1).toString();
-                                  } else if (op1 == "EUR" && op2 == "COP") {
-                                    v_destiny =
-                                        (double.parse(v_origin) * eur_cop)
-                                            .toString();
-                                    print(v_destiny);
-                                  } else if (op1 == "COP" && op2 == "USD") {
-                                    v_destiny =
-                                        (double.parse(v_origin) / usd_cop)
-                                            .toString();
-                                    print(v_destiny);
-                                  } else if (op1 == "COP" && op2 == "EUR") {
-                                    v_destiny =
-                                        (double.parse(v_origin) / eur_cop)
-                                            .toString();
-                                    print(v_destiny);
-                                  } else if (op1 == "COP" && op2 == "COP") {
-                                    v_destiny =
-                                        (double.parse(v_origin) / 1).toString();
-                                    print(v_destiny);
-                                  }
-                                  ;
+                                  //print(v_origin);
                                 } else {
                                   v_origin = v_origin + o_l[index].number;
-                                  print(v_origin);
+                                  if (op1 == "USD" && op2 == "USD") {
+                                    v_destiny = NumberFormat.simpleCurrency()
+                                        .format((double.parse(v_origin) / 1))
+                                        .toString();
+                                    //print(v_destiny);
+                                  } else if (op1 == "USD" && op2 == "EUR") {
+                                    v_destiny = NumberFormat.simpleCurrency()
+                                        .format(
+                                            (double.parse(v_origin) * usd_eur))
+                                        .toString();
+                                    //print(v_destiny);
+                                  } else if (op1 == "USD" && op2 == "COP") {
+                                    v_destiny = NumberFormat.simpleCurrency()
+                                        .format(
+                                            (double.parse(v_origin) * usd_cop))
+                                        .toString();
+                                    //print(v_destiny);
+                                  } else if (op1 == "EUR" && op2 == "USD") {
+                                    v_destiny = NumberFormat.simpleCurrency()
+                                        .format(
+                                            (double.parse(v_origin) / usd_eur))
+                                        .toString();
+                                    //print(v_destiny);
+                                  } else if (op1 == "EUR" && op2 == "EUR") {
+                                    v_destiny = NumberFormat.simpleCurrency()
+                                        .format((double.parse(v_origin) / 1))
+                                        .toString();
+                                  } else if (op1 == "EUR" && op2 == "COP") {
+                                    v_destiny = NumberFormat.simpleCurrency()
+                                        .format(
+                                            (double.parse(v_origin) * eur_cop))
+                                        .toString();
+                                    //print(v_destiny);
+                                  } else if (op1 == "COP" && op2 == "USD") {
+                                    v_destiny = NumberFormat.simpleCurrency()
+                                        .format(
+                                            (double.parse(v_origin) / usd_cop))
+                                        .toString();
+                                    //print(v_destiny);
+                                  } else if (op1 == "COP" && op2 == "EUR") {
+                                    v_destiny = NumberFormat.simpleCurrency()
+                                        .format(
+                                            (double.parse(v_origin) / eur_cop))
+                                        .toString();
+                                    //print(v_destiny);
+                                  } else if (op1 == "COP" && op2 == "COP") {
+                                    v_destiny = NumberFormat.simpleCurrency()
+                                        .format((double.parse(v_origin) / 1))
+                                        .toString();
+                                    //print(v_destiny);
+                                  }
+                                  //print(v_origin);
                                 }
-                                ;
                               },
                             );
                           },
